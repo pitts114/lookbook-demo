@@ -174,17 +174,11 @@
     ═══════════════════════════════════════ %>
 <%= render "shared/section", title: "Modals", background: :light do %>
   <div class="flex flex-wrap gap-3">
-    <% { "modal-sm" => :sm, "modal-md" => :md, "modal-lg" => :lg }.each do |mid, sz| %>
-      <div data-controller="modal" class="inline-block">
-        <button class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700"
-                data-action="modal#open">
-          Open <%= sz.to_s.upcase %> Modal
-        </button>
-
-        <%= render("shared/modal", id: mid, title: "#{sz.to_s.upcase} Modal", size: sz) do %>
-          <p class="text-gray-600">This is a <%= sz %> modal.</p>
-        <% end %>
-      </div>
+    <% { demo_sm: :sm, demo_md: :md, demo_lg: :lg }.each do |modal_id, sz| %>
+      <%= link_to "Open #{sz.to_s.upcase} Modal",
+            modal_path(modal_id, title: "#{sz.to_s.upcase} Modal", size: sz),
+            class: "inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700",
+            data: { turbo_frame: "modal" } %>
     <% end %>
   </div>
 <% end %>

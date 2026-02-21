@@ -1,10 +1,6 @@
-<div data-controller="modal">
-  <button class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700"
-          data-action="modal#open">
-    Open Small Modal
-  </button>
+<%= link_to "Open Small Modal",
+      modal_path(:demo_sm, title: "Small Modal", size: :sm),
+      class: "inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700",
+      data: { turbo_frame: "modal" } %>
 
-  <%= render "shared/modal", id: "small-modal", title: "Small Modal", size: :sm do %>
-    <p class="text-gray-600">This is a small modal dialog.</p>
-  <% end %>
-</div>
+<%= turbo_frame_tag "modal" %>

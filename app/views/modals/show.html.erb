@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "modal" do %>
+  <%= render "shared/modal", id: @modal_id, title: @title, size: @size do %>
+    <%= render "modals/#{@modal_id}" %>
+  <% end %>
+<% end %>

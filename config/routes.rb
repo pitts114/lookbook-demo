@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 
   root "showcase#index"
   get "showcase/kitchen_sink", to: "showcase#kitchen_sink"
+
+  resources :modals, only: :show
 end

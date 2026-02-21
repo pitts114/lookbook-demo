@@ -56,17 +56,10 @@
 
 <%# Modal %>
 <%= render "shared/section", title: "Modal" do %>
-  <div data-controller="modal">
-    <button class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700"
-            data-action="modal#open">
-      Open Modal
-    </button>
-
-    <%= render("shared/modal", id: "demo-modal", title: "Welcome!", size: :md) do %>
-      <p class="text-gray-600 mb-4">This modal is an ERB partial with a Stimulus controller for open/close behavior.</p>
-      <%= render "shared/button", label: "Got it", variant: :primary %>
-    <% end %>
-  </div>
+  <%= link_to "Open Modal",
+        modal_path(:welcome, title: "Welcome!", size: :md),
+        class: "inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700",
+        data: { turbo_frame: "modal" } %>
 <% end %>
 
 <%# Footer %>
