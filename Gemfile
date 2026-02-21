@@ -44,6 +44,11 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # Lookbook — UI development environment for browsing component previews
+  gem "lookbook", ">= 2.3"
+  gem "listen"
+  gem "actioncable"
 end
 
 group :test do

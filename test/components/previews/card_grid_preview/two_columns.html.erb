@@ -1,0 +1,8 @@
+<%= render "shared/card_grid", columns: 2 do %>
+  <%= render "shared/card", title: "First Card" do %>
+    <p class="text-gray-600">Content for the first card.</p>
+  <% end %>
+  <%= render "shared/card", title: "Second Card" do %>
+    <p class="text-gray-600">Content for the second card.</p>
+  <% end %>
+<% end %>
