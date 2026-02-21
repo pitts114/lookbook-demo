@@ -1,0 +1,75 @@
+<%# Hero Section %>
+<%= render "shared/section", title: "ERB Partials as Components", subtitle: "Reusable, composable UI — no gems required. Just Rails.", background: :blue do %>
+  <%= render "shared/button_group" do %>
+    <%= render "shared/button", label: "Kitchen Sink", variant: :primary, url: "/showcase/kitchen_sink", size: :lg %>
+    <%= render "shared/button", label: "View Source", variant: :ghost, size: :lg %>
+  <% end %>
+<% end %>
+
+<%# Feature Cards %>
+<%= render "shared/section", title: "Feature Highlights", subtitle: "Each card below is an ERB partial, composed inside a card grid partial." do %>
+  <%= render "shared/card_grid", columns: 3 do %>
+    <%= render "shared/card", title: "Props = Locals" do %>
+      <p class="text-gray-600 text-sm">Pass data to partials with locals — just like React props.</p>
+      <div class="mt-3"><%= render "shared/badge", text: "locals", color: :blue %></div>
+    <% end %>
+
+    <%= render "shared/card", title: "Children = Blocks" do %>
+      <p class="text-gray-600 text-sm">Use <code class="bg-gray-100 px-1 rounded">yield</code> to accept block content — like <code class="bg-gray-100 px-1 rounded">{children}</code>.</p>
+      <div class="mt-3"><%= render "shared/badge", text: "yield", color: :green %></div>
+    <% end %>
+
+    <%= render "shared/card", title: "Composition" do %>
+      <p class="text-gray-600 text-sm">Nest partials inside partials. Card grids wrapping cards wrapping badges.</p>
+      <div class="mt-3"><%= render "shared/badge", text: "composable", color: :purple %></div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%# Alerts %>
+<%= render "shared/section", title: "Alerts", background: :light do %>
+  <div class="space-y-4">
+    <%= render "shared/alert", message: "Your changes have been saved successfully.", type: :success, dismissible: true %>
+    <%= render("shared/alert", message: "Your trial expires in 3 days.", type: :warning) do %>
+      <%= render "shared/button", label: "Upgrade Now", variant: :warning, size: :sm %>
+    <% end %>
+  </div>
+<% end %>
+
+<%# Spinners %>
+<%= render "shared/section", title: "Loading States" do %>
+  <div class="flex items-center gap-6">
+    <%= render "shared/spinner", size: :sm, color: :gray %>
+    <%= render "shared/spinner", size: :md, color: :blue %>
+    <%= render "shared/spinner", size: :lg, color: :blue %>
+  </div>
+<% end %>
+
+<%# Empty State %>
+<%= render "shared/section", background: :light do %>
+  <%= render "shared/card" do %>
+    <%= render("shared/empty_state", title: "No projects yet", description: "Get started by creating your first project.", icon: "📁") do %>
+      <%= render "shared/button", label: "New Project", variant: :primary %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%# Modal %>
+<%= render "shared/section", title: "Modal" do %>
+  <button class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700"
+          onclick="document.getElementById('demo-modal').classList.remove('hidden')">
+    Open Modal
+  </button>
+<% end %>
+
+<%= render("shared/modal", id: "demo-modal", title: "Welcome!", size: :md) do %>
+  <p class="text-gray-600 mb-4">This modal is an ERB partial with a Stimulus controller for open/close behavior.</p>
+  <%= render "shared/button", label: "Got it", variant: :primary %>
+<% end %>
+
+<%# Footer %>
+<%= render "shared/section", background: :dark do %>
+  <div class="text-center">
+    <p class="text-gray-400 text-sm">Built with Rails ERB partials, Tailwind CSS, and Stimulus.</p>
+  </div>
+<% end %>

@@ -1,0 +1,22 @@
+<%
+  brand ||= "App"
+  links ||= []
+%>
+
+<nav class="bg-white border-b border-gray-200 px-4 py-3">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <div class="flex items-center space-x-8">
+      <a href="/" class="text-xl font-bold text-gray-900"><%= brand %></a>
+      <div class="hidden sm:flex space-x-4">
+        <% links.each do |link| %>
+          <a href="<%= link[:url] %>" class="text-gray-600 hover:text-gray-900 text-sm font-medium"><%= link[:label] %></a>
+        <% end %>
+      </div>
+    </div>
+    <div class="flex items-center space-x-3">
+      <% if block_given? %>
+        <%= yield %>
+      <% end %>
+    </div>
+  </div>
+</nav>

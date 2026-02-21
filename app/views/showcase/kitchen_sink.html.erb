@@ -1,0 +1,267 @@
+<%= render "shared/section", title: "Kitchen Sink", subtitle: "Every partial in every variant — the component catalog." do %>
+  <p class="text-sm text-gray-500">This page renders every shared partial so you can see all variants at a glance.</p>
+<% end %>
+
+<%# ═══════════════════════════════════════
+    BUTTONS
+    ═══════════════════════════════════════ %>
+<%= render "shared/section", title: "Buttons", background: :light do %>
+  <div class="space-y-8">
+    <%# All variants at default (md) size %>
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Variants</h4>
+      <%= render "shared/button_group" do %>
+        <% %i[primary secondary success warning danger info ghost].each do |v| %>
+          <%= render "shared/button", label: v.to_s.capitalize, variant: v %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%# Sizes %>
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Sizes</h4>
+      <%= render "shared/button_group" do %>
+        <% %i[sm md lg].each do |s| %>
+          <%= render "shared/button", label: "Size #{s}", size: s %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%# Disabled %>
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Disabled</h4>
+      <%= render "shared/button_group" do %>
+        <%= render "shared/button", label: "Disabled Primary", variant: :primary, disabled: true %>
+        <%= render "shared/button", label: "Disabled Secondary", variant: :secondary, disabled: true %>
+      <% end %>
+    </div>
+
+    <%# Link buttons %>
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Link Buttons</h4>
+      <%= render "shared/button_group" do %>
+        <%= render "shared/button", label: "Link Primary", variant: :primary, url: "#" %>
+        <%= render "shared/button", label: "Link Ghost", variant: :ghost, url: "#" %>
+      <% end %>
+    </div>
+
+    <%# Full width %>
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Full Width</h4>
+      <div class="max-w-sm">
+        <%= render "shared/button", label: "Full Width Button", variant: :primary, full_width: true %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%# ═══════════════════════════════════════
+    BADGES
+    ═══════════════════════════════════════ %>
+<%= render "shared/section", title: "Badges" do %>
+  <div class="space-y-6">
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Colors</h4>
+      <div class="flex flex-wrap gap-2">
+        <% %i[blue green red yellow gray purple].each do |c| %>
+          <%= render "shared/badge", text: c.to_s.capitalize, color: c %>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Pill (Rounded)</h4>
+      <div class="flex flex-wrap gap-2">
+        <% %i[blue green red yellow gray purple].each do |c| %>
+          <%= render "shared/badge", text: c.to_s.capitalize, color: c, rounded: true %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%# ═══════════════════════════════════════
+    ALERTS
+    ═══════════════════════════════════════ %>
+<%= render "shared/section", title: "Alerts", background: :light do %>
+  <div class="space-y-4">
+    <% %i[info success warning danger].each do |t| %>
+      <%= render "shared/alert", message: "This is a #{t} alert.", type: t %>
+    <% end %>
+
+    <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mt-6 mb-3">Dismissible</h4>
+    <%= render "shared/alert", message: "You can dismiss this alert.", type: :info, dismissible: true %>
+
+    <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mt-6 mb-3">With Block Content</h4>
+    <%= render("shared/alert", message: "Action required.", type: :warning) do %>
+      <%= render "shared/button", label: "Take Action", variant: :warning, size: :sm %>
+    <% end %>
+  </div>
+<% end %>
+
+<%# ═══════════════════════════════════════
+    AVATARS
+    ═══════════════════════════════════════ %>
+<%= render "shared/section", title: "Avatars" do %>
+  <div class="space-y-6">
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Initials (all sizes)</h4>
+      <div class="flex items-center gap-4">
+        <%= render "shared/avatar", name: "Alice Bob", size: :sm %>
+        <%= render "shared/avatar", name: "Charlie Davis", size: :md %>
+        <%= render "shared/avatar", name: "Eve Franklin", size: :lg %>
+      </div>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">With Image</h4>
+      <div class="flex items-center gap-4">
+        <%= render "shared/avatar", name: "Photo User", image_url: "https://i.pravatar.cc/150?img=32", size: :sm %>
+        <%= render "shared/avatar", name: "Photo User", image_url: "https://i.pravatar.cc/150?img=32", size: :md %>
+        <%= render "shared/avatar", name: "Photo User", image_url: "https://i.pravatar.cc/150?img=32", size: :lg %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%# ═══════════════════════════════════════
+    SPINNERS
+    ═══════════════════════════════════════ %>
+<%= render "shared/section", title: "Spinners", background: :light do %>
+  <div class="space-y-6">
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Sizes</h4>
+      <div class="flex items-center gap-6">
+        <%= render "shared/spinner", size: :sm %>
+        <%= render "shared/spinner", size: :md %>
+        <%= render "shared/spinner", size: :lg %>
+      </div>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Colors</h4>
+      <div class="flex items-center gap-6">
+        <%= render "shared/spinner", color: :blue %>
+        <%= render "shared/spinner", color: :gray %>
+        <span class="bg-gray-800 p-3 rounded-lg inline-flex">
+          <%= render "shared/spinner", color: :white %>
+        </span>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%# ═══════════════════════════════════════
+    CARDS
+    ═══════════════════════════════════════ %>
+<%= render "shared/section", title: "Cards" do %>
+  <div class="space-y-8">
+    <%= render "shared/card_grid", columns: 3 do %>
+      <%= render "shared/card", title: "Card with Title", subtitle: "And a subtitle" do %>
+        <p class="text-sm text-gray-600">Body content goes here.</p>
+      <% end %>
+
+      <%= render "shared/card", title: "Card with Image", image_url: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop" do %>
+        <p class="text-sm text-gray-600">A card with a cover image.</p>
+      <% end %>
+
+      <%= render "shared/card" do %>
+        <p class="text-sm text-gray-600">A body-only card with no title or subtitle — just block content.</p>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<%# ═══════════════════════════════════════
+    MODALS
+    ═══════════════════════════════════════ %>
+<%= render "shared/section", title: "Modals", background: :light do %>
+  <div class="flex flex-wrap gap-3">
+    <% { "modal-sm" => :sm, "modal-md" => :md, "modal-lg" => :lg }.each do |mid, sz| %>
+      <button class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700"
+              onclick="document.getElementById('<%= mid %>').classList.remove('hidden')">
+        Open <%= sz.to_s.upcase %> Modal
+      </button>
+    <% end %>
+  </div>
+<% end %>
+
+<% { "modal-sm" => :sm, "modal-md" => :md, "modal-lg" => :lg }.each do |mid, sz| %>
+  <%= render("shared/modal", id: mid, title: "#{sz.to_s.upcase} Modal", size: sz) do %>
+    <p class="text-gray-600">This is a <%= sz %> modal.</p>
+  <% end %>
+<% end %>
+
+<%# ═══════════════════════════════════════
+    BUTTON GROUPS
+    ═══════════════════════════════════════ %>
+<%= render "shared/section", title: "Button Groups" do %>
+  <div class="space-y-6">
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Horizontal</h4>
+      <%= render "shared/button_group", direction: :horizontal do %>
+        <%= render "shared/button", label: "Save", variant: :primary %>
+        <%= render "shared/button", label: "Cancel", variant: :secondary %>
+        <%= render "shared/button", label: "Delete", variant: :danger %>
+      <% end %>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Vertical</h4>
+      <div class="max-w-xs">
+        <%= render "shared/button_group", direction: :vertical do %>
+          <%= render "shared/button", label: "Option A", variant: :primary, full_width: true %>
+          <%= render "shared/button", label: "Option B", variant: :secondary, full_width: true %>
+          <%= render "shared/button", label: "Option C", variant: :ghost, full_width: true %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%# ═══════════════════════════════════════
+    CARD GRIDS
+    ═══════════════════════════════════════ %>
+<%= render "shared/section", title: "Card Grids", background: :light do %>
+  <div class="space-y-8">
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">2 Columns</h4>
+      <%= render "shared/card_grid", columns: 2 do %>
+        <%= render "shared/card", title: "Column 1" do %><p class="text-sm text-gray-600">Content</p><% end %>
+        <%= render "shared/card", title: "Column 2" do %><p class="text-sm text-gray-600">Content</p><% end %>
+      <% end %>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">3 Columns</h4>
+      <%= render "shared/card_grid", columns: 3 do %>
+        <%= render "shared/card", title: "Col 1" do %><p class="text-sm text-gray-600">Content</p><% end %>
+        <%= render "shared/card", title: "Col 2" do %><p class="text-sm text-gray-600">Content</p><% end %>
+        <%= render "shared/card", title: "Col 3" do %><p class="text-sm text-gray-600">Content</p><% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%# ═══════════════════════════════════════
+    EMPTY STATES
+    ═══════════════════════════════════════ %>
+<%= render "shared/section", title: "Empty States" do %>
+  <%= render "shared/card_grid", columns: 2 do %>
+    <%= render "shared/card" do %>
+      <%= render "shared/empty_state", title: "No results", description: "Try adjusting your search or filters." %>
+    <% end %>
+
+    <%= render "shared/card" do %>
+      <%= render("shared/empty_state", title: "No messages", description: "Start a conversation.", icon: "💬") do %>
+        <%= render "shared/button", label: "New Message", variant: :primary, size: :sm %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%# ═══════════════════════════════════════
+    NAVBAR (inline example)
+    ═══════════════════════════════════════ %>
+<%= render "shared/section", title: "Navbar", background: :light do %>
+  <div class="border border-gray-300 rounded-lg overflow-hidden">
+    <%= render "shared/navbar", brand: "ExampleApp", links: [{ label: "Dashboard", url: "#" }, { label: "Settings", url: "#" }] do %>
+      <%= render "shared/button", label: "Sign In", variant: :primary, size: :sm %>
+    <% end %>
+  </div>
+<% end %>

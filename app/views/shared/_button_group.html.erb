@@ -1,0 +1,11 @@
+<%
+  direction ||= :horizontal
+
+  classes = direction.to_sym == :vertical ? "flex flex-col space-y-2" : "flex flex-wrap items-center gap-2"
+%>
+
+<div class="<%= classes %>">
+  <% if block_given? %>
+    <%= yield %>
+  <% end %>
+</div>

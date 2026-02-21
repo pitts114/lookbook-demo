@@ -1,0 +1,21 @@
+<%
+  name      ||= "User"
+  image_url ||= nil
+  size      ||= :md
+
+  sizes = {
+    sm: "h-8 w-8 text-xs",
+    md: "h-10 w-10 text-sm",
+    lg: "h-14 w-14 text-lg"
+  }
+
+  initials = name.split.map(&:first).join.upcase[0, 2]
+%>
+
+<% if image_url %>
+  <img src="<%= image_url %>" alt="<%= name %>" class="<%= sizes[size.to_sym] %> rounded-full object-cover" />
+<% else %>
+  <span class="<%= sizes[size.to_sym] %> rounded-full bg-gray-500 text-white inline-flex items-center justify-center font-medium">
+    <%= initials %>
+  </span>
+<% end %>

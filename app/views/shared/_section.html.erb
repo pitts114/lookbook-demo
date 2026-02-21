@@ -1,0 +1,27 @@
+<%
+  title      ||= nil
+  subtitle   ||= nil
+  background ||= :white
+  max_width  ||= "max-w-6xl"
+
+  backgrounds = {
+    white: "bg-white",
+    light: "bg-gray-50",
+    dark:  "bg-gray-900 text-white",
+    blue:  "bg-blue-600 text-white"
+  }
+%>
+
+<section class="<%= backgrounds[background.to_sym] %> py-16 px-4">
+  <div class="<%= max_width %> mx-auto">
+    <% if title %>
+      <h2 class="text-3xl font-bold mb-2"><%= title %></h2>
+    <% end %>
+    <% if subtitle %>
+      <p class="text-lg <%= background.to_sym == :white || background.to_sym == :light ? 'text-gray-600' : 'text-white/80' %> mb-8"><%= subtitle %></p>
+    <% end %>
+    <% if block_given? %>
+      <%= yield %>
+    <% end %>
+  </div>
+</section>

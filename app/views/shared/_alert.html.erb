@@ -1,0 +1,30 @@
+<%
+  message     ||= ""
+  type        ||= :info
+  dismissible ||= false
+
+  types = {
+    info:    { bg: "bg-blue-50 border-blue-200 text-blue-800",  icon: "ℹ" },
+    success: { bg: "bg-green-50 border-green-200 text-green-800", icon: "✓" },
+    warning: { bg: "bg-yellow-50 border-yellow-200 text-yellow-800", icon: "⚠" },
+    danger:  { bg: "bg-red-50 border-red-200 text-red-800",    icon: "✕" }
+  }
+
+  config = types[type.to_sym]
+%>
+
+<div class="<%= config[:bg] %> border rounded-lg p-4" role="alert"
+     <%= 'data-controller="dismissible"' if dismissible %>>
+  <div class="flex items-start">
+    <span class="mr-3 text-lg flex-shrink-0"><%= config[:icon] %></span>
+    <div class="flex-1">
+      <p><%= message %></p>
+      <% if block_given? %>
+        <div class="mt-2"><%= yield %></div>
+      <% end %>
+    </div>
+    <% if dismissible %>
+      <button class="ml-3 text-lg flex-shrink-0 hover:opacity-70" data-action="dismissible#dismiss">&times;</button>
+    <% end %>
+  </div>
+</div>

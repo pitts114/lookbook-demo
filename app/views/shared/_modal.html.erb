@@ -1,0 +1,31 @@
+<%
+  id    ||= "modal"
+  title ||= "Modal"
+  size  ||= :md
+
+  sizes = {
+    sm: "max-w-sm",
+    md: "max-w-lg",
+    lg: "max-w-2xl"
+  }
+%>
+
+<div id="<%= id %>" class="hidden fixed inset-0 z-50" data-controller="modal">
+  <!-- Backdrop -->
+  <div class="fixed inset-0 bg-black/50" data-action="click->modal#close"></div>
+
+  <!-- Dialog -->
+  <div class="fixed inset-0 flex items-center justify-center p-4">
+    <div class="<%= sizes[size.to_sym] %> w-full bg-white rounded-xl shadow-xl relative">
+      <div class="flex items-center justify-between p-4 border-b border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-900"><%= title %></h3>
+        <button class="text-gray-400 hover:text-gray-600 text-2xl leading-none" data-action="modal#close">&times;</button>
+      </div>
+      <div class="p-6">
+        <% if block_given? %>
+          <%= yield %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<%
+  title     ||= nil
+  subtitle  ||= nil
+  image_url ||= nil
+  padding   ||= true
+%>
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+  <% if image_url %>
+    <img src="<%= image_url %>" alt="<%= title %>" class="w-full h-48 object-cover" />
+  <% end %>
+  <div class="<%= 'p-6' if padding %>">
+    <% if title %>
+      <h3 class="text-lg font-semibold text-gray-900"><%= title %></h3>
+    <% end %>
+    <% if subtitle %>
+      <p class="mt-1 text-sm text-gray-500"><%= subtitle %></p>
+    <% end %>
+    <% if block_given? %>
+      <div class="<%= 'mt-4' if title || subtitle %>"><%= yield %></div>
+    <% end %>
+  </div>
+</div>
