@@ -16,6 +16,7 @@ If you're a React developer exploring Rails, this project maps familiar concepts
 
 - **`/`** — A polished homepage composing partials into a realistic layout
 - **`/showcase/kitchen_sink`** — Every partial in every variant (the "Storybook" page)
+- **`/lookbook`** — Interactive component browser powered by [Lookbook](https://lookbook.build) (development only)
 
 ## How a Partial Works
 
@@ -138,9 +139,17 @@ bin/rails test
 
 23 request tests verify both pages render correctly with all component variants.
 
+## Lookbook
+
+[Lookbook](https://lookbook.build) provides an interactive UI for browsing partials in isolation — like Storybook but native to Rails. It works with plain ERB partials (no ViewComponent required).
+
+Preview classes live in `test/components/previews/` with one file per partial. Partials that accept blocks use companion ERB templates in subdirectories (e.g. `card_preview/with_title.html.erb`).
+
+Lookbook is available in development at [http://localhost:3000/lookbook](http://localhost:3000/lookbook).
+
 ## Stack
 
 - Ruby on Rails 8.1
 - Tailwind CSS 4
 - Stimulus (ships with Rails) — used for modal open/close and alert dismiss
-- No database, no extra gems — pure view-layer demo
+- [Lookbook](https://lookbook.build) — component preview browser (development only)
